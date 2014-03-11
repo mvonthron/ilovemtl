@@ -3,8 +3,18 @@ var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 
 var noteSchema = new mongoose.Schema({
-  text: { type: String, unique: false},
-  twitterHandle: { type: String, unique: false}
+  text: { type: String, unique: false },
+  twitterHandle: { type: String, unique: false },
+  updated: { type: Date, unique: false },
+});
+
+noteSchema.pre('save', function(next) {
+  // Clean Up Twitter Handle As Needed;
+  if (this.twitterHandle.indexOf('@') !== -1) {
+    this.twitterHandle = this.twitterHandle.replace("@", "");
+  }
+  if (!this.updated) this.updated = new Date;
+  next();
 });
 
 //module.exports = mongoose.model('Note', noteSchema);

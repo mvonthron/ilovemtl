@@ -1,25 +1,6 @@
-var passport = require('passport');
 var _ = require('underscore');
 var Note = require('../models/Note');
 
-
-/**
- * Abstractions to Node Saving
- * Let's abstract the operations we have going on with Mongo because we may have different triggers for
- * them.
- */
-
-/**
- * GET /note/new
- * Signup page.
- */
-
-exports.getNewNoteForm = function(req, res) {
-  if (req.user) return res.redirect('/');
-  res.render('new_note', {
-    title: 'Create Note'
-  });
-};
 
 /**
  * POST /note/new
@@ -29,54 +10,42 @@ exports.getNewNoteForm = function(req, res) {
  */
 
 exports.postNewNoteForm = function(req, res, next) {
-  req.assert('noteText', 'Note must be between 5 and 150 characters').len(5, 150);
-
+  req.assert('noteText', 'Text must be between 1 and 140 characters').len(1, 140);
+  req.assert('twitterHandle', 'Twitter handle must be between 1 and 25 characters').len(1, 25);
   var errors = req.validationErrors();
-
+  console.log(req.body);
   if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/note/new');
+    return res.send({ errors: errors });
   }
-
   var note = new Note({
     text: req.body.noteText,
     twitterHandle: req.body.twitterHandle
+  }).save(function(err, newNote) {
+    return res.send(newNote);
   });
-
-  note.save(function(err) {
-    if (err) {
-      req.flash('errors', { msg: 'Something happened idk what' });
-    }
-    return res.redirect('/');
-  });
-
 };
 
-// @TODO cleanup the stupid property naming and make it consistent.
-exports.saveNote = function(noteData, callback) {
-  var note = new Note(noteData);
-  // I suck.  this is where controller logic should go and instead its in app. boo.
-  note.save(function(err, note) {
-      callback(err, note);
-  });
 
-};
+/**
+ * GET /notes/:skip/:limit
+ * Get Notes.
+ * @param req
+ * @param res
+ */
 
-exports.getNotes = function(requestParams) {
+exports.getNotes = function(req, res) {
   console.log('getnotes');
+  console.log(req.params);
+  var requestParams = {};
+  var requestParams = {skip: req.params.skip, limit: req.params.limit};
+  // TODO validate params incoming.
+  console.log(requestParams);
   // @TODO -- use select here to figure out unneeded params.
-  return Note.find(null, null, requestParams).exec();
+  Note.find(null, null, requestParams).sort({ _id: 1 }).exec(function(err, foundNotes){
+    res.send({
+        requestParams: requestParams,
+        notes: foundNotes
+    });
+  });
 };
 
-
-
-
-/*exports.respond = function (socket_io) {
-  // now we can do whatever we want:
-  console.log('RESPONDING');
-  socket_io.on('news',function(newsreel){
-  // as is proper, protocol logic like
-  // this belongs in a controller:
-    socket.broadcast.emit(newsreel);
-  });
-};*/
