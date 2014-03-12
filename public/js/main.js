@@ -20,7 +20,7 @@ var prLover = {
       hashtags: 'ilovepr'
     }
     var tweetUrl = 'https://twitter.com/intent/tweet?' + $.param(tweetLink, true);
-    newNote = newNote + '<div class="tweet-link pull-right"><a href="' + tweetUrl + '"><img src="img/bird_white_32.png"/></a></div>';
+    newNote = newNote + '<div class="tweet-link pull-right"><a href="' + tweetUrl + '"><img src="img/bird_dark_32.png"/></a></div>';
     newNote = newNote + "</li>";
 
     return newNote;
