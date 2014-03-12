@@ -11,7 +11,7 @@ var Note = require('../models/Note');
 
 exports.postNewNoteForm = function(req, res, next) {
   req.assert('noteText', 'Text must be between 1 and 140 characters').len(1, 140);
-  req.assert('twitterHandle', 'Twitter handle must be between 1 and 25 characters').len(1, 25);
+  //req.assert('twitterHandle', 'Twitter handle must be between 1 and 25 characters').len(1, 25);
   var errors = req.validationErrors();
   console.log(req.body);
   if (errors) {

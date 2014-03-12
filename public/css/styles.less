@@ -3,7 +3,23 @@
 @import "lib/bootstrap/bootstrap";
 @import "lib/isotope.css";
 @import "themes/default";
-@import url(http://fonts.googleapis.com/css?family=Capriola);
+@font-face {
+  font-family: 'Archer-Bold';
+  src: url('/css/webfont/Archer-Bold.eot?') format('eot'), 
+       url('/css/webfont/Archer-Bold.otf')  format('opentype'),
+       url('/css/webfont/Archer-Bold.woff') format('woff'), 
+       url('/css/webfont/Archer-Bold.ttf')  format('truetype'),
+       url('/css/webfont/Archer-Bold.svg#Archer-Bold') format('svg');
+}
+@font-face {
+  font-family: 'Archer-Medium';
+  src: url('/css/webfont/Archer-Medium.eot?') format('eot'), 
+       url('/css/webfont/Archer-Medium.otf')  format('opentype'),
+       url('/css/webfont/Archer-Medium.woff') format('woff'), 
+       url('/css/webfont/Archer-Medium.ttf')  format('truetype'),
+       url('/css/webfont/Archer-Medium.svg#Archer-Medium') format('svg');
+}
+
 
 // Scaffolding
 // ---- ---------------------
@@ -131,7 +147,7 @@ body {
 
 // Custom Stylez
 body {
-  font-family: 'Archer', sans-serif;
+  font-family: 'Archer-Medium', sans-serif;
   color: #999999;
 }
 
@@ -199,9 +215,8 @@ body {
 
 h1 {
     color: #333333;
-    font-family: archer, sans;
+    font-family: Archer-Bold, sans;
     font-size: 46px;
-    font-weight: bold;
 }
 
 a {
