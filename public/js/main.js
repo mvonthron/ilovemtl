@@ -16,7 +16,7 @@ var prLover = {
     }
     var tweetLink = {
       url: 'http://bit.ly/ilovepr',
-      text: 'Yo Me Quedo en Puerto Rico porque ' + noteData.text,
+      text: 'I love San Antonio because ' + noteData.text,
       hashtags: 'ilovepr'
     }
     var tweetUrl = 'https://twitter.com/intent/tweet?' + $.param(tweetLink, true);
