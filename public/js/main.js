@@ -15,7 +15,7 @@ var prLover = {
       newNote = newNote + "<div class='note-twitter-handle'><a href='http://twitter.com/" + noteData.twitterHandle + "' target='_blank'>@" + noteData.twitterHandle + "</a></div>";
     }
     var tweetLink = {
-      url: 'www.ilovesanantonio.org',
+      url: 'http://www.ilovesanantonio.org',
       text: 'I love San Antonio because ' + noteData.text,
       hashtags: 'ilovesatx'
     }
