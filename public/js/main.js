@@ -17,7 +17,7 @@ var prLover = {
     var tweetLink = {
       url: 'http://bit.ly/ilovesa',
       text: 'I love San Antonio because ' + noteData.text,
-      hashtags: 'ilovesa'
+      hashtags: 'iloveSA'
     }
     var tweetUrl = 'https://twitter.com/intent/tweet?' + $.param(tweetLink, true);
     newNote = newNote + '<div class="tweet-link pull-right"><a href="' + tweetUrl + '"><img src="img/bird_dark_32.png"/></a></div>';
