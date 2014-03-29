@@ -7,16 +7,10 @@ html
     meta(name='description', content='')
     meta(name='author', content='')
     title #{title} We love Montréal
-    link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Arvo')
+    link(rel='stylesheet', type='text/css', href='//fonts.googleapis.com/css?family=Arvo')
+    link(rel='stylesheet', type='text/css', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
     != css('styles')
     script(src='//platform.twitter.com/widgets.js')
-    script.
-      /*window.twttr = (function (d,s,id) {
-        var t, js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
-        js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
-        return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
-       }(document, "script", "twitter-wjs"));*/
     != js('application')
   body
     #wrap
