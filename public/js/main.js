@@ -15,7 +15,7 @@ var prLover = {
       newNote = newNote + "<div class='note-twitter-handle'><a href='http://twitter.com/" + noteData.twitterHandle + "' target='_blank'>@" + noteData.twitterHandle + "</a></div>";
     }
     var tweetLink = {
-      url: 'http://bit.ly/ilovesa',
+      url: 'http://ilovemtl.org',
       text: 'I love Montréal because ' + noteData.text,
       hashtags: 'ilovemtl'
     }
