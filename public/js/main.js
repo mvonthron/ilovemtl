@@ -107,6 +107,7 @@ var prLover = {
     // @TODO -- rework this so that validation is still done properly.
     var noteText = $('#new-note-form #noteText').val();
     var twitterHandle = $('#new-note-form #twitterHandle').val();
+    var isVisitor = $('#new-note-form #isVisitor:checked').val() == "on";
     var _csrf = $("#new-note-form [name='_csrf']").val();
     return $.ajax({
       type: "POST",
@@ -114,6 +115,7 @@ var prLover = {
       data: {
         noteText: noteText,
         twitterHandle: twitterHandle,
+        isVisitor: isVisitor,
         _csrf: _csrf
       }
     });

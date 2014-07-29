@@ -6,6 +6,7 @@ var noteSchema = new mongoose.Schema({
   text: { type: String, unique: false },
   twitterHandle: { type: String, unique: false },
   updated: { type: Date, unique: false },
+  isVisitor: { type: Boolean, unique: false},
 });
 
 noteSchema.pre('save', function(next) {

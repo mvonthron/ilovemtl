@@ -19,7 +19,8 @@ exports.postNewNoteForm = function(req, res, next) {
   }
   var note = new Note({
     text: req.body.noteText,
-    twitterHandle: req.body.twitterHandle
+    twitterHandle: req.body.twitterHandle,
+    isVisitor: req.body.isVisitor
   }).save(function(err, newNote) {
     return res.send(newNote);
   });
