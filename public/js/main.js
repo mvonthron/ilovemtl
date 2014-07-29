@@ -10,15 +10,24 @@ var prLover = {
 
   templateNote: function(noteData) {
     // Template the new note.
-    var newNote = "<li class='note col-md-3'><div class='note-text'>" + noteData.text + "</div>";
+    if(noteData.isVisitor){
+        visitorClass = "visitor";
+    }else{
+        visitorClass = "resident";
+    }
+    var newNote = "<li class='note "+visitorClass+" col-md-3'><div class='note-text'>" + noteData.text + "</div>";
     if (noteData.twitterHandle) {
       newNote = newNote + "<div class='note-twitter-handle'><a href='http://twitter.com/" + noteData.twitterHandle + "' target='_blank'>@" + noteData.twitterHandle + "</a></div>";
+    }
+    if(noteData.isVisitor){
+        newNote = newNote + "<div class='note-isvisitor'><i class='fa fa-send' title='Visitor' alt='Visitor'></i></div>";
     }
     var tweetLink = {
       url: 'http://ilovemtl.org',
       text: 'I love Montréal because ' + noteData.text,
       hashtags: 'ilovemtl'
     }
+
     var tweetUrl = 'https://twitter.com/intent/tweet?' + $.param(tweetLink, true);
     newNote = newNote + '<div class="tweet-link pull-right"><a href="' + tweetUrl + '"><img src="img/bird_dark_32.png"/></a></div>';
     newNote = newNote + "</li>";
