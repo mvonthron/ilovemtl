@@ -4,6 +4,7 @@
   "scripts": {
     "start": "node app.js"
   },
+  "main": "app.js",
   "dependencies": {
     "async": "~0.2.10",
     "bcrypt-nodejs": "~0.0.3",
